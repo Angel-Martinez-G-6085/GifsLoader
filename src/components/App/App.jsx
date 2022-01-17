@@ -1,10 +1,11 @@
 import React from 'react';
 import { Fragment } from 'react';
+import GifyApp from '../GifyApp/GifyApp.jsx';
 
 function App() {
   return (
     <Fragment>
-      <h1>Hola amigo</h1>
+      <GifyApp />
     </Fragment>
   );
 }
