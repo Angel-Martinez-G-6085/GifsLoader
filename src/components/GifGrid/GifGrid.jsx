@@ -1,3 +1,4 @@
+import './GifGrid.scss';
 import React from 'react';
 import { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
