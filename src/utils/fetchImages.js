@@ -16,7 +16,10 @@ const fetchImages = async (category, func) => {
         url: obj.images.downsized_medium.url,
       };
     });
-    func(filteredData);
+    func({
+      data: filteredData,
+      loading: false,
+    });
   } catch (error) {
     console.log(error);
   }
