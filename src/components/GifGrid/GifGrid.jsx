@@ -1,26 +1,23 @@
 import './GifGrid.scss';
 import React from 'react';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import fetchImages from '../../utils/fetchImages';
+import { useFetchGif } from '../../hooks/useFetchGif';
 
 const GifGrid = ({ category }) => {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    fetchImages(category, setImages);
-  }, []);
+  const { data: images, loading } = useFetchGif(category);
 
   return (
     <Fragment>
       <div className="container images-container">
-        <h3>{category}</h3>
+        <h3 className="text-center">{category}</h3>
+        {loading && <p className="loading-text">Cargando imagenes</p>}
         <div className="card-container">
           {images.map((obj) => {
             return (
               <li key={obj.id}>
-                <img src={obj.url} />
-                <h3>{obj.title}</h3>
+                <img className="card-image" src={obj.url} alt={obj.title} />
+                <h3 className="card-title">{obj.title}</h3>
               </li>
             );
           })}
